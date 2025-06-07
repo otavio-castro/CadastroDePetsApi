@@ -1,6 +1,16 @@
-﻿namespace CadastroDePetsApi.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CadastroDePetsApi.Models;
+
+[Table("Animais")]
+public class Animal
 {
-    public class Animal
-    {
-    }
+    public int AnimalId { get; set; }
+    public string? Nome { get; set; }
+    public int Idade { get; set; }
+    public char Genero { get; set; }
+    public string? raca { get; set; }
+
+    [ForeignKey("Proprietario")]
+    public int ProprietarioId { get; set; }
 }

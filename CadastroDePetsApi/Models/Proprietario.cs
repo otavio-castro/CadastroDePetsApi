@@ -1,6 +1,12 @@
-﻿namespace CadastroDePetsApi.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CadastroDePetsApi.Models;
+
+[Table("Proprietarios")]
+public class Proprietario
 {
-    public class Proprietario
-    {
-    }
+    public int ProprietarioId { get; set; }
+    public string? Nome { get; set; }
+    public string? Endereco { get; set; }
+    public string? Telefone { get; set; }
 }

@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace CadastroDePetsApi.Controllers
+namespace CadastroDePetsApi.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ProprietarioController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProprietarioController : ControllerBase
-    {
-    }
 }
