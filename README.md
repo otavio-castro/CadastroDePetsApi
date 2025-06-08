@@ -37,7 +37,7 @@ Ideal para fins educacionais, testes locais e projetos leves.
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/CadastroDePetsApi.git
+   git clone https://github.com/otavio-castro/CadastroDePetsApi.git
    cd CadastroDePetsApi
    ```
 
