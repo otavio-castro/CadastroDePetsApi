@@ -1,5 +1,7 @@
-﻿namespace CadastroDePetsApi.Services;
+﻿using CadastroDePetsApi.Services.Interfaces;
 
-public class ProprietarioServico
+namespace CadastroDePetsApi.Services;
+
+public class ProprietarioServico : IProprietarioServico
 {
 }

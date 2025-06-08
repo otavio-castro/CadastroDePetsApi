@@ -1,8 +1,9 @@
 ﻿using System.Xml.Serialization;
+using CadastroDePetsApi.Context.Interfaces;
 
 namespace CadastroDePetsApi.Context
 {
-    public class AppXmlContext
+    public class AppXmlContext : IAppXmlContext
     {
         public void SalvarDados<T>(string filePath, List<T> data)
         {
@@ -10,6 +11,8 @@ namespace CadastroDePetsApi.Context
             using var stream = new FileStream(filePath, FileMode.Create);
 
             serializer.Serialize(stream, data);
+
+            //TODO, se o arquivo ja existir deve usar o já existente
         }
 
         public List<T> CarregarDados<T>(string filePath)

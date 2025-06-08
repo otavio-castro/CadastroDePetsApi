@@ -1,5 +1,7 @@
-﻿namespace CadastroDePetsApi.Services;
+﻿using CadastroDePetsApi.Services.Interfaces;
 
-public class AnimalServico
+namespace CadastroDePetsApi.Services;
+
+public class AnimalServico : IAnimalServico
 {
 }

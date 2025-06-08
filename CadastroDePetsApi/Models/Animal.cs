@@ -9,7 +9,7 @@ public class Animal
     public string? Nome { get; set; }
     public int Idade { get; set; }
     public char Genero { get; set; }
-    public string? raca { get; set; }
+    public string? Raca { get; set; }
 
     [ForeignKey("Proprietario")]
     public int ProprietarioId { get; set; }
