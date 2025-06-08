@@ -5,14 +5,19 @@ namespace CadastroDePetsApi.Context
 {
     public class AppXmlContext : IAppXmlContext
     {
-        public void SalvarDados<T>(string filePath, List<T> data)
+        public void SalvarDados<T>(string filePath, List<T> novosDados)
         {
+            var dadosExistentes = new List<T>();
+
+            if (File.Exists(filePath))
+                dadosExistentes = CarregarDados<T>(filePath);
+
+            dadosExistentes.AddRange(novosDados);
+
             XmlSerializer serializer = new(typeof(List<T>));
             using var stream = new FileStream(filePath, FileMode.Create);
 
-            serializer.Serialize(stream, data);
-
-            //TODO, se o arquivo ja existir deve usar o já existente
+            serializer.Serialize(stream, novosDados);
         }
 
         public List<T> CarregarDados<T>(string filePath)
