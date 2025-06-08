@@ -35,7 +35,7 @@ Ideal para fins educacionais, testes locais e projetos leves.
 
 ### Passos
 
-1. Clone o repositório:
+1. Clonar o repositório:
 
    ```bash
    git clone https://github.com/otavio-castro/CadastroDePetsApi.git
@@ -48,7 +48,7 @@ Ideal para fins educacionais, testes locais e projetos leves.
    dotnet restore
    ```
 
-3. Execute a aplicação:
+3. Executar a aplicação:
 
    ```bash
    dotnet run
