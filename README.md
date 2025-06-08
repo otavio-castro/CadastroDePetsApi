@@ -8,6 +8,7 @@ Ideal para fins educacionais, testes locais e projetos leves.
 
 ## 👨‍👩‍👧‍👦 Integrantes do Grupo
 
+- Breno Viana
 - Gustavo Rodrigues  
 - Moises Samuel  
 - Lucas De Jesus  
