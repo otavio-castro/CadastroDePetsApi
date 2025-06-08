@@ -1,4 +1,6 @@
-﻿using CadastroDePetsApi.Persistencia.Entidades;
+﻿using CadastroDePetsApi.Apresentacao.Servico.Interfaces;
+using CadastroDePetsApi.Persistencia.Context.Interfaces;
+using CadastroDePetsApi.Persistencia.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CadastroDePetsApi.Controllers;
@@ -7,10 +9,21 @@ namespace CadastroDePetsApi.Controllers;
 [ApiController]
 public class ProprietarioController : ControllerBase
 {
-    [HttpPost("CadastrarProprietario")]
-    public IActionResult CadastrarProprietario([FromBody] Proprietario proprietario)
+    private readonly IProprietarioServico _proprietarioServico;
+    public static string animalCaminho = "animais.xml";
+    public static string proprietarioCaminho = "proprietarios.xml";
+
+    public ProprietarioController(IProprietarioServico proprietarioServico)
     {
-        return StatusCode(201);
+        _proprietarioServico = proprietarioServico;
+    }
+
+    [HttpPost("CadastrarProprietario")]
+    public IActionResult CadastrarDono([FromBody] Proprietario proprietario)
+    {
+        return _proprietarioServico.CadastrarProprietario(proprietario)
+        ? StatusCode(201)
+        : Conflict("Já existe uma pessoa cadastrada com esse Id");
     }
 
     [HttpDelete("ExcluirProprietarioPorId/{id}")]

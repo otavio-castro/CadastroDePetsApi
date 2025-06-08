@@ -1,5 +1,5 @@
 ﻿using CadastroDePetsApi.Apresentacao.DTOs;
-using CadastroDePetsApi.Persistencia.Context.Interfaces;
+using CadastroDePetsApi.Apresentacao.Servico.Interfaces;
 using CadastroDePetsApi.Persistencia.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,67 +9,32 @@ namespace CadastroDePetsApi.Controllers;
 [ApiController]
 public class AnimalController : ControllerBase
 {
-    private readonly IAppXmlContext _xmlContext;
+    private readonly IAnimalServico _animalServico;
+    public static string animalCaminho = "animais.xml";
+    public static string proprietarioCaminho = "proprietarios.xml";
 
-    public AnimalController(IAppXmlContext xmlContext)
+    public AnimalController(IAnimalServico animalServico)
     {
-        _xmlContext = xmlContext;
+        _animalServico = animalServico;
     }
 
     [HttpPost("CadastrarPet")]
     public IActionResult CadastrarPet([FromBody] Animal animal)
     {
-        return StatusCode(201);
+        return _animalServico.CadastrarAnimal(animal)
+        ? StatusCode(201)
+        : Conflict("Já existe um pet cadastrado com esse Id");
     }
 
     [HttpGet("RetornarTodosOsPets")]
-    public IEnumerable<AnimalDto> RetornarTodosOsPets()
+    public ActionResult<IEnumerable<AnimalDto>> RetornarTodosOsPets()
     {
-        return new List<AnimalDto> { new AnimalDto
-                {
-                    AnimalId = 1,
-                    Nome = "Rex",
-                    Idade = 5,
-                    Genero = 'M',
-                    Raca = "Labrador",
-                    Proprietario = new ProprietarioDto
-                    {
-                        ProprietarioId = 1,
-                        Nome = "João Silva",
-                        Endereco = "Rua das Flores, 123",
-                        Telefone = "11999999999"
-                    }
-                },
-                new AnimalDto
-                {
-                    AnimalId = 2,
-                    Nome = "Mia",
-                    Idade = 3,
-                    Genero = 'F',
-                    Raca = "Persa",
-                    Proprietario = new ProprietarioDto
-                    {
-                        ProprietarioId = 2,
-                        Nome = "Maria Oliveira",
-                        Endereco = "Av. Brasil, 456",
-                        Telefone = "11988888888"
-                    }
-                },
-                new AnimalDto
-                {
-                    AnimalId = 3,
-                    Nome = "Bolt",
-                    Idade = 2,
-                    Genero = 'M',
-                    Raca = "Husky",
-                    Proprietario = new ProprietarioDto
-                    {
-                        ProprietarioId = 3,
-                        Nome = "Carlos Souza",
-                        Endereco = "Rua do Sol, 789",
-                        Telefone = "11977777777"
-                    }
-                }};
+        var animais = _animalServico.BuscarAnimais();
+
+        if (!animais.Value.Any())
+            return NotFound(new { Status = "Arquivo xml vazio" });
+
+        return animais;
     }
 
     [HttpGet("BuscarPetPorId/{id}")]

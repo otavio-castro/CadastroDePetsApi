@@ -17,7 +17,7 @@ namespace CadastroDePetsApi.Persistencia.Context
             XmlSerializer serializer = new(typeof(List<T>));
             using var stream = new FileStream(filePath, FileMode.Create);
 
-            serializer.Serialize(stream, novosDados);
+            serializer.Serialize(stream, dadosExistentes);
         }
 
         public List<T> CarregarDados<T>(string filePath)

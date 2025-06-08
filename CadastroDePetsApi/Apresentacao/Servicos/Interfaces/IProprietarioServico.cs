@@ -1,6 +1,9 @@
-﻿namespace CadastroDePetsApi.Apresentacao.Servico.Interfaces
+﻿using CadastroDePetsApi.Persistencia.Entidades;
+
+namespace CadastroDePetsApi.Apresentacao.Servico.Interfaces
 {
-    public class IProprietarioServico
+    public interface IProprietarioServico
     {
+        bool CadastrarProprietario(Proprietario proprietario);
     }
 }
