@@ -1,4 +1,4 @@
-﻿using CadastroDePetsApi.Models;
+﻿using CadastroDePetsApi.Persistencia.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CadastroDePetsApi.Controllers;

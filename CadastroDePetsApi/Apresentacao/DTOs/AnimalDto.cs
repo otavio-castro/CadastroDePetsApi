@@ -1,4 +1,4 @@
-﻿namespace CadastroDePetsApi.DTOs;
+﻿namespace CadastroDePetsApi.Apresentacao.DTOs;
 
 public class AnimalDto
 {

@@ -1,4 +1,4 @@
-﻿namespace CadastroDePetsApi.Context.Interfaces
+﻿namespace CadastroDePetsApi.Persistencia.Context.Interfaces
 {
     public interface IAppXmlContext
     {

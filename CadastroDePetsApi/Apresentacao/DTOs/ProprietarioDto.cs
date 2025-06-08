@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace CadastroDePetsApi.Apresentacao.DTOs;
 
-namespace CadastroDePetsApi.Models;
-
-[Table("Proprietarios")]
-public class Proprietario
+public class ProprietarioDto
 {
     public int ProprietarioId { get; set; }
     public string? Nome { get; set; }

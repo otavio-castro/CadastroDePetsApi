@@ -1,6 +1,9 @@
-﻿namespace CadastroDePetsApi.DTOs;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-public class ProprietarioDto
+namespace CadastroDePetsApi.Persistencia.Entidades;
+
+[Table("Proprietarios")]
+public class Proprietario
 {
     public int ProprietarioId { get; set; }
     public string? Nome { get; set; }

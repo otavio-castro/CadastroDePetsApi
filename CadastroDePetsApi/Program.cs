@@ -1,5 +1,4 @@
-using CadastroDePetsApi.Context;
-using CadastroDePetsApi.Context.Interfaces;
+using CadastroDePetsApi.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +8,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IAppXmlContext, AppXmlContext>();
+DIStartup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
 

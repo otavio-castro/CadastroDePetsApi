@@ -1,7 +1,7 @@
 ﻿using System.Xml.Serialization;
-using CadastroDePetsApi.Context.Interfaces;
+using CadastroDePetsApi.Persistencia.Context.Interfaces;
 
-namespace CadastroDePetsApi.Context
+namespace CadastroDePetsApi.Persistencia.Context
 {
     public class AppXmlContext : IAppXmlContext
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CadastroDePetsApi.Models;
+namespace CadastroDePetsApi.Persistencia.Entidades;
 
 [Table("Animais")]
 public class Animal
