@@ -8,11 +8,11 @@ Ideal para fins educacionais, testes locais e projetos leves.
 
 ## 👨‍👩‍👧‍👦 Integrantes do Grupo
 
-- Moises Samuel  
-- Sarah Palhares  
 - Gustavo Rodrigues  
-- Otavio Nascimento  
+- Moises Samuel  
 - Lucas De Jesus  
+- Otavio Nascimento
+- Sarah Palhares  
 
 ---
 
@@ -47,10 +47,7 @@ Ideal para fins educacionais, testes locais e projetos leves.
    dotnet run
    ```
 
-3. A API estará disponível em:
-
-   - https://localhost:5001  
-   - http://localhost:5000  
+3. A API estará disponível localmente.
 
 ---
 
