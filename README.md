@@ -42,13 +42,19 @@ Ideal para fins educacionais, testes locais e projetos leves.
    cd CadastroDePetsApi
    ```
 
-2. Execute a aplicação:
+2. Baixar os pacotes:
+
+   ```bash
+   dotnet restore
+   ```
+
+3. Execute a aplicação:
 
    ```bash
    dotnet run
    ```
 
-3. A API estará disponível localmente.
+4. A API estará disponível localmente.
 
 ---
 
