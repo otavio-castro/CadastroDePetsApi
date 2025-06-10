@@ -8,4 +8,20 @@
     <Raca>Vira lata</Raca>
     <ProprietarioId>1</ProprietarioId>
   </Animal>
+  <Animal>
+    <AnimalId>0</AnimalId>
+    <Nome>string</Nome>
+    <Idade>0</Idade>
+    <Genero>string</Genero>
+    <Raca>string</Raca>
+    <ProprietarioId>0</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>5</AnimalId>
+    <Nome>Belinha</Nome>
+    <Idade>4</Idade>
+    <Genero>Fêmea</Genero>
+    <Raca>Poodle</Raca>
+    <ProprietarioId>5</ProprietarioId>
+  </Animal>
 </ArrayOfAnimal>
