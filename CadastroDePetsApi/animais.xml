@@ -8,4 +8,12 @@
     <Raca>Vira lata</Raca>
     <ProprietarioId>1</ProprietarioId>
   </Animal>
+  <Animal>
+    <AnimalId>3</AnimalId>
+    <Nome>Pipoca</Nome>
+    <Idade>2</Idade>
+    <Genero>femea</Genero>
+    <Raca>srd</Raca>
+    <ProprietarioId>3</ProprietarioId>
+  </Animal>
 </ArrayOfAnimal>
