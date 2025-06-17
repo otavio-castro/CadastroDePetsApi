@@ -1,0 +1,30 @@
+[HttpGet("OrdenarPetsOrdemAlfabetica")]
+    public IEnumerable<AnimalDto> OrdenarPetsOrdemAlfabetica()
+    {
+        List<AnimalDto> animaisOrdenados = new();
+
+        try
+        {
+            XDocument doc = XDocument.Load(animalCaminho);
+
+            animaisOrdenados = doc.Descendants("Animal")
+                .Select(a => new AnimalDto
+                {
+                    Id = int.Parse(a.Element("Id")?.Value ?? "0"),
+                    Nome = a.Element("Nome")?.Value,
+                    Especie = a.Element("Especie")?.Value,
+                    Raca = a.Element("Raca")?.Value,
+                    Idade = int.Parse(a.Element("Idade")?.Value ?? "0"),
+                    Porte = a.Element("Porte")?.Value,
+                    Peso = double.Parse(a.Element("Peso")?.Value ?? "0")
+                })
+                .OrderBy(a => a.Nome) // Ordena por nome (ordem alfabética)
+                .ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao processar o arquivo XML: {ex.Message}");
+        }
+
+        return animaisOrdenados;
+    }
