@@ -8,4 +8,6 @@ public interface IAnimalServico
 {
     bool CadastrarAnimal(Animal animal);
     ActionResult<IEnumerable<AnimalDto>> BuscarAnimais();
+
+    ActionResult<AnimalDto>BuscarAnimalPorId(int id);
 }
