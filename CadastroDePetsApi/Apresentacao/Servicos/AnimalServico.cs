@@ -57,4 +57,26 @@ public class AnimalServico : IAnimalServico
             return new List<AnimalDto>();
         }
     }
+
+    public ActionResult<IEnumerable<AnimalDto>> OrdenarAlfabetico()
+{
+    try
+    {
+        var animais = BuscarAnimais();
+
+        if (animais == null || !animais.Value.Any())
+            return new List<AnimalDto>();
+
+        var animaisOrdenados = animais.Value
+            .OrderBy(a => a.Nome) 
+            .ToList();
+
+        return animaisOrdenados;
+    }
+    catch
+    {
+        return new List<AnimalDto>();
+    }
+}
+
 }
