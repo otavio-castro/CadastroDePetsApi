@@ -44,9 +44,14 @@ public class AnimalController : ControllerBase
     }
 
     [HttpGet("OrdenarPetsOrdemAlfabetica")]
-    public IEnumerable<AnimalDto> OrdenarPetsOrdemAlfabetica()
+    public ActionResult<IEnumerable<AnimalDto>> OrdenarPetsOrdemAlfabetica()
     {
-        return new List<AnimalDto> { new AnimalDto() };
+        var animais = _animalServico.OrdernarAlfabetico();
+
+        if (!animais.Value.Any())
+            return NotFound(new { Status = "Arquivo xml vazio ou sem animais cadastrados" });
+
+        return animais;
     }
 
     [HttpPut("AlterarInformacoesPet/{id}")]
