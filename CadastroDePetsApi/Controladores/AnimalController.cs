@@ -70,6 +70,9 @@ public ActionResult<AnimalDto> BuscarPetPorId(int id)
     [HttpDelete("ExcluirPetPorId/{id}")]
     public IActionResult ExcluirPetPorId(int id)
     {
-        return Ok();
+
+        return _animalServico.DeletarPetPorId(id)
+       ? StatusCode(201)
+       : Conflict("Pet não existente");
     }
 }

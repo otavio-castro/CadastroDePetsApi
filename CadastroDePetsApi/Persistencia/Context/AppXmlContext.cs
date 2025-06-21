@@ -30,5 +30,22 @@ namespace CadastroDePetsApi.Persistencia.Context
 
             return serializer.Deserialize(stream) as List<T> ?? new List<T>();
         }
+
+        public bool LimparDados<T>(string filePath)
+        {
+            try
+            {
+                // Cria uma lista vazia do tipo T e salva no XML, sobrescrevendo tudo
+                XmlSerializer serializer = new(typeof(List<T>));
+                using var stream = new FileStream(filePath, FileMode.Create);
+                serializer.Serialize(stream, new List<T>());
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

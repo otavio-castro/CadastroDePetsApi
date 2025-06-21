@@ -104,4 +104,29 @@ public class AnimalServico : IAnimalServico
         }
     }
 
+    public bool DeletarPetPorId(int id)
+    {
+
+        var animais = _xmlContext.CarregarDados<Animal>(animalCaminho);
+
+        try
+        {
+
+            var listaComAnimalRemovido = from animal in animais
+                                         where animal.AnimalId != id
+                                         select animal;
+
+            _xmlContext.LimparDados<Animal>(animalCaminho);
+            _xmlContext.SalvarDados(animalCaminho, listaComAnimalRemovido.ToList());
+
+            return true;
+
+        }
+        catch
+        {
+            return false;
+        }
+
+
+    }
 }

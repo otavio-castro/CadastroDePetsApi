@@ -11,4 +11,7 @@ public interface IAnimalServico
     ActionResult<IEnumerable<AnimalDto>> OrdenarAlfabetico();
 
     ActionResult<AnimalDto>BuscarAnimalPorId(int id);
+
+    bool DeletarPetPorId(int id);
+    
 }
