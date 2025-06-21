@@ -9,5 +9,5 @@ public interface IAnimalServico
     bool CadastrarAnimal(Animal animal);
     ActionResult<IEnumerable<AnimalDto>> BuscarAnimais();
 
-    ActionResult<AnimalDto> AlterarInformacoesPetComDto(int id, AnimalDto animalDto);
+    ActionResult<AnimalDto> AlterarInformacoesPet(int id, AnimalDto animalDto);
 }
