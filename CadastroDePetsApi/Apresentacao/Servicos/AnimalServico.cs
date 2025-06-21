@@ -57,4 +57,38 @@ public class AnimalServico : IAnimalServico
             return new List<AnimalDto>();
         }
     }
+
+    public ActionResult<AnimalDto> AlterarInformacoesPet(int id, AnimalDto animalDto)
+    {
+        try
+        {
+            var animais = _xmlContext.CarregarDados<Animal>(animalCaminho);
+
+            var animalExistente = animais.FirstOrDefault(a => a.AnimalId == id);
+            if (animalExistente == null)
+                return new NotFoundResult();
+
+            var animalAtualizado = _autoMapper.Map<Animal>(animalDto);
+            animalAtualizado.AnimalId = id;
+
+            var listaAtualizada = animais.Where(a => a.AnimalId != id).ToList();
+            listaAtualizada.Add(animalAtualizado);
+
+            _xmlContext.LimparDados<Animal>(animalCaminho);
+            _xmlContext.SalvarDados(animalCaminho, listaAtualizada);
+
+            var proprietarios = _xmlContext.CarregarDados<Proprietario>(proprietarioCaminho);
+            var animalDtoRetorno = _autoMapper.Map<AnimalDto>(animalAtualizado);
+
+            var proprietario = proprietarios.FirstOrDefault(p => p.ProprietarioId == animalAtualizado.ProprietarioId);
+            if (proprietario != null)
+                animalDtoRetorno.Proprietario = _autoMapper.Map<ProprietarioDto>(proprietario);
+
+            return animalDtoRetorno;
+        }
+        catch
+        {
+            return new StatusCodeResult(500);
+        }
+    }
 }
