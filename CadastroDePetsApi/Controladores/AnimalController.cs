@@ -31,22 +31,34 @@ public class AnimalController : ControllerBase
     {
         var animais = _animalServico.BuscarAnimais();
 
-        if (!animais.Value.Any())
+        if (animais?.Value == null || !animais.Value.Any())
             return NotFound(new { Status = "Arquivo xml vazio" });
 
         return animais;
     }
 
     [HttpGet("BuscarPetPorId/{id}")]
-    public IEnumerable<AnimalDto> BuscarPetPorId(int id)
-    {
-        return new List<AnimalDto> { new AnimalDto() };
-    }
+public ActionResult<AnimalDto> BuscarPetPorId(int id)
+{
+    var animalDto = _animalServico.BuscarAnimalPorId(id);
+
+    if (animalDto == null)
+        return NotFound(new { Mensagem = "Pet não encontrado" });
+
+    return Ok(animalDto);
+}
+
+
 
     [HttpGet("OrdenarPetsOrdemAlfabetica")]
-    public IEnumerable<AnimalDto> OrdenarPetsOrdemAlfabetica()
+    public ActionResult<IEnumerable<AnimalDto>> OrdenarPetsOrdemAlfabetica()
     {
-        return new List<AnimalDto> { new AnimalDto() };
+        var animais = _animalServico.OrdenarAlfabetico();
+
+        if (!animais.Value.Any())
+            return NotFound(new { Status = "Arquivo xml vazio ou sem animais cadastrados" });
+
+        return animais;
     }
 
     [HttpPut("AlterarInformacoesPet/{id}")]

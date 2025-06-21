@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 DIStartup.ConfigureServices(builder.Services);
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

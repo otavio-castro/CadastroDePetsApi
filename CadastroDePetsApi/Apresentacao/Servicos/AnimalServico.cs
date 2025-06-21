@@ -57,6 +57,53 @@ public class AnimalServico : IAnimalServico
             return new List<AnimalDto>();
         }
     }
+
+    // NOVO MÉTODO: BuscarAnimalPorId
+    public ActionResult<AnimalDto> BuscarAnimalPorId(int id)
+    {
+        try
+        {
+            // Reaproveita o método BuscarAnimais
+            var todosAnimais = BuscarAnimais().Value;
+
+            if (todosAnimais == null)
+                return new StatusCodeResult(500);
+
+            var animal = todosAnimais.FirstOrDefault(a => a.AnimalId == id);
+
+            if (animal == null)
+                return new NotFoundResult();
+
+            return animal;
+        }
+        catch
+        {
+            return new StatusCodeResult(500);
+        }
+    }
+
+
+    public ActionResult<IEnumerable<AnimalDto>> OrdenarAlfabetico()
+    {
+        try
+        {
+            var animais = BuscarAnimais();
+
+            if (animais == null || !animais.Value.Any())
+                return new List<AnimalDto>();
+
+            var animaisOrdenados = animais.Value
+                .OrderBy(a => a.Nome)
+                .ToList();
+
+            return animaisOrdenados;
+        }
+        catch
+        {
+            return new List<AnimalDto>();
+        }
+    }
+
     public bool DeletarPetPorId(int id)
     {
 

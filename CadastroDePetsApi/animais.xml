@@ -8,4 +8,44 @@
     <Raca>Vira lata</Raca>
     <ProprietarioId>1</ProprietarioId>
   </Animal>
+  <Animal>
+    <AnimalId>3</AnimalId>
+    <Nome>Pipoca</Nome>
+    <Idade>2</Idade>
+    <Genero>femea</Genero>
+    <Raca>srd</Raca>
+    <ProprietarioId>3</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>0</AnimalId>
+    <Nome>Vicente</Nome>
+    <Idade>6</Idade>
+    <Genero>masculino</Genero>
+    <Raca>buldog</Raca>
+    <ProprietarioId>0</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>87</AnimalId>
+    <Nome>Vicente</Nome>
+    <Idade>6</Idade>
+    <Genero>masculino</Genero>
+    <Raca>buldog</Raca>
+    <ProprietarioId>0</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>56</AnimalId>
+    <Nome>esmeraldo</Nome>
+    <Idade>8</Idade>
+    <Genero>masculino</Genero>
+    <Raca>caramelo</Raca>
+    <ProprietarioId>0</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>65</AnimalId>
+    <Nome>esmeraldo</Nome>
+    <Idade>8</Idade>
+    <Genero>masculino</Genero>
+    <Raca>caramelo</Raca>
+    <ProprietarioId>1</ProprietarioId>
+  </Animal>
 </ArrayOfAnimal>
