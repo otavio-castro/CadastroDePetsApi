@@ -50,9 +50,14 @@ public class AnimalController : ControllerBase
     }
 
     [HttpPut("AlterarInformacoesPet/{id}")]
-    public IActionResult AlterarInformacoesPet(int id)
+    public ActionResult<AnimalDto> AlterarInformacoesPet(int id, [FromBody] AnimalDto animalDto)
     {
-        return Ok();
+        if (animalDto == null)
+            return BadRequest("Dados do animal são obrigatórios");
+
+        var resultado = _animalServico.AlterarInformacoesPet(id, animalDto);
+
+        return resultado;
     }
 
     [HttpDelete("ExcluirPetPorId/{id}")]
