@@ -38,46 +38,48 @@ public class AnimalController : ControllerBase
     }
 
     [HttpGet("BuscarPetPorId/{id}")]
-public ActionResult<AnimalDto> BuscarPetPorId(int id)
-{
-    var animalDto = _animalServico.BuscarAnimalPorId(id);
+    public ActionResult<AnimalDto> BuscarPetPorId(int id)
+    {
+        var animalDto = _animalServico.BuscarAnimalPorId(id);
 
-    if (animalDto == null)
-        return NotFound(new { Mensagem = "Pet não encontrado" });
+        if (animalDto == null)
+            return NotFound(new { Mensagem = "Pet não encontrado" });
 
-    return Ok(animalDto);
-}
-
-
+        return animalDto;
+    }
 
     [HttpGet("OrdenarPetsOrdemAlfabetica")]
     public ActionResult<IEnumerable<AnimalDto>> OrdenarPetsOrdemAlfabetica()
     {
         var animais = _animalServico.OrdenarAlfabetico();
 
-        if (!animais.Value.Any())
+        if (animais?.Value == null || !animais.Value.Any())
             return NotFound(new { Status = "Arquivo xml vazio ou sem animais cadastrados" });
 
         return animais;
     }
 
     [HttpPut("AlterarInformacoesPet/{id}")]
-    public ActionResult<AnimalDto> AlterarInformacoesPet(int id, [FromBody] Animal animalAtualizado)
+    public ActionResult<AnimalDto> AlterarInformacoesPet(int id,
+    [FromQuery(Name = "novo_nome")] string? nome,
+    [FromQuery(Name = "nova_idade")] int idade,
+    [FromQuery(Name = "novo_genero")] string? genero,
+    [FromQuery(Name = "nova_raca")] string? raca,
+    [FromQuery(Name = "novo_id_proprietario")] int proprietarioId)
     {
-        if (animalAtualizado == null)
-            return BadRequest("Dados do animal são obrigatórios");
+        Animal animalAtualizado = new Animal
+        { AnimalId = id, Nome = nome, Genero = genero, Idade = idade, Raca = raca, ProprietarioId = proprietarioId };
 
         animalAtualizado.AnimalId = id;
 
-        var resultado = _animalServico.AlterarInformacoesPet(id, animalAtualizado);
-
-        return resultado;
+        return _animalServico.AlterarInformacoesPet(animalAtualizado)
+        ? StatusCode(201)
+        : Conflict("Pet não existente");
     }
 
     [HttpDelete("ExcluirPetPorId/{id}")]
     public IActionResult ExcluirPetPorId(int id)
     {
-
         return _animalServico.DeletarPetPorId(id)
        ? StatusCode(201)
        : Conflict("Pet não existente");

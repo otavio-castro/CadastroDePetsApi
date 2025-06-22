@@ -1,36 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfAnimal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Animal>
-    <AnimalId>2</AnimalId>
-    <Nome>Rex</Nome>
-    <Idade>5</Idade>
-    <Genero>Cachorro</Genero>
-    <Raca>Vira lata</Raca>
-    <ProprietarioId>1</ProprietarioId>
-  </Animal>
-  <Animal>
     <AnimalId>3</AnimalId>
-    <Nome>Pipoca</Nome>
-    <Idade>2</Idade>
-    <Genero>femea</Genero>
-    <Raca>srd</Raca>
-    <ProprietarioId>3</ProprietarioId>
-  </Animal>
-  <Animal>
-    <AnimalId>0</AnimalId>
-    <Nome>Vicente</Nome>
-    <Idade>6</Idade>
-    <Genero>masculino</Genero>
-    <Raca>buldog</Raca>
-    <ProprietarioId>0</ProprietarioId>
-  </Animal>
-  <Animal>
-    <AnimalId>87</AnimalId>
-    <Nome>Vicente</Nome>
-    <Idade>6</Idade>
-    <Genero>masculino</Genero>
-    <Raca>buldog</Raca>
-    <ProprietarioId>0</ProprietarioId>
+    <Nome>Rex</Nome>
+    <Idade>15</Idade>
+    <Genero>Macho</Genero>
+    <Raca>Vira-Lata</Raca>
+    <ProprietarioId>1</ProprietarioId>
   </Animal>
   <Animal>
     <AnimalId>56</AnimalId>
@@ -39,14 +15,6 @@
     <Genero>masculino</Genero>
     <Raca>caramelo</Raca>
     <ProprietarioId>0</ProprietarioId>
-  </Animal>
-  <Animal>
-    <AnimalId>65</AnimalId>
-    <Nome>esmeraldo</Nome>
-    <Idade>8</Idade>
-    <Genero>masculino</Genero>
-    <Raca>caramelo</Raca>
-    <ProprietarioId>1</ProprietarioId>
   </Animal>
   <Animal>
     <AnimalId>22</AnimalId>
@@ -63,5 +31,13 @@
     <Genero>Macho</Genero>
     <Raca>Dachshund</Raca>
     <ProprietarioId>9</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>87</AnimalId>
+    <Nome>Vicenta</Nome>
+    <Idade>6</Idade>
+    <Genero>Femea</Genero>
+    <Raca>Vira-lata</Raca>
+    <ProprietarioId>1</ProprietarioId>
   </Animal>
 </ArrayOfAnimal>

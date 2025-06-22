@@ -3,6 +3,7 @@ using CadastroDePetsApi.Apresentacao.DTOs;
 using CadastroDePetsApi.Apresentacao.Servico.Interfaces;
 using CadastroDePetsApi.Persistencia.Context.Interfaces;
 using CadastroDePetsApi.Persistencia.Entidades;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CadastroDePetsApi.Apresentacao.Servico;
@@ -129,37 +130,43 @@ public class AnimalServico : IAnimalServico
 
 
     }
-    public ActionResult<AnimalDto> AlterarInformacoesPet(int id, Animal animalAtualizado)
+    public bool AlterarInformacoesPet(Animal animalAtualizado)
     {
         try
         {
             var animais = _xmlContext.CarregarDados<Animal>(animalCaminho);
-            var animalExistente = animais.FirstOrDefault(a => a.AnimalId == id);
+            var animalAntigo = animais.FirstOrDefault(a => a.AnimalId == animalAtualizado.AnimalId);
 
-            if (animalExistente == null)
-                return new NotFoundResult();
+            if (animalAntigo == null)
+                return false;
 
-            animalExistente.Nome = animalAtualizado.Nome;
-            animalExistente.Idade = animalAtualizado.Idade;
-            animalExistente.Genero = animalAtualizado.Genero;
-            animalExistente.Raca = animalAtualizado.Raca;
-            animalExistente.ProprietarioId = animalAtualizado.ProprietarioId;
+            RealizarMapeamentoCondicional(animalAntigo, animalAtualizado);
+            DeletarPetPorId(animalAntigo.AnimalId);
+            CadastrarAnimal(animalAntigo);
 
-            _xmlContext.LimparDados<Animal>(animalCaminho);
-            _xmlContext.SalvarDados(animalCaminho, animais);
-
-            var proprietarios = _xmlContext.CarregarDados<Proprietario>(proprietarioCaminho);
-            var animalDto = _autoMapper.Map<AnimalDto>(animalExistente);
-            var proprietario = proprietarios.FirstOrDefault(p => p.ProprietarioId == animalExistente.ProprietarioId);
-
-            if (proprietario != null)
-                animalDto.Proprietario = _autoMapper.Map<ProprietarioDto>(proprietario);
-
-            return animalDto;
+            return true;
         }
         catch
         {
-            return new StatusCodeResult(500);
+            return false;
         }
+    }
+
+    private void RealizarMapeamentoCondicional(Animal animalAntigo, Animal animalNovo)
+    {
+        if (!string.IsNullOrWhiteSpace(animalNovo.Nome))
+            animalAntigo.Nome = animalNovo.Nome;
+
+        if (animalNovo.Idade > 0)
+            animalAntigo.Idade = animalNovo.Idade;
+
+        if (!string.IsNullOrWhiteSpace(animalNovo.Genero))
+            animalAntigo.Genero = animalNovo.Genero;
+
+        if (!string.IsNullOrWhiteSpace(animalNovo.Raca))
+            animalAntigo.Raca = animalNovo.Raca;
+
+        if (animalNovo.ProprietarioId > 0)
+            animalAntigo.ProprietarioId = animalNovo.ProprietarioId;
     }
 }
