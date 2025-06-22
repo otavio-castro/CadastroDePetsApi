@@ -62,9 +62,16 @@ public ActionResult<AnimalDto> BuscarPetPorId(int id)
     }
 
     [HttpPut("AlterarInformacoesPet/{id}")]
-    public IActionResult AlterarInformacoesPet(int id)
+    public ActionResult<AnimalDto> AlterarInformacoesPet(int id, [FromBody] Animal animalAtualizado)
     {
-        return Ok();
+        if (animalAtualizado == null)
+            return BadRequest("Dados do animal são obrigatórios");
+
+        animalAtualizado.AnimalId = id;
+
+        var resultado = _animalServico.AlterarInformacoesPet(id, animalAtualizado);
+
+        return resultado;
     }
 
     [HttpDelete("ExcluirPetPorId/{id}")]

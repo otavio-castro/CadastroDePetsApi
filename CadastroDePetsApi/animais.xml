@@ -50,10 +50,18 @@
   </Animal>
   <Animal>
     <AnimalId>22</AnimalId>
-    <Nome>Belinha</Nome>
+    <Nome>Bellinha</Nome>
     <Idade>2</Idade>
     <Genero>Femea</Genero>
-    <Raca>Poodle</Raca>
-    <ProprietarioId>2</ProprietarioId>
+    <Raca>Dachshund</Raca>
+    <ProprietarioId>0</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>5</AnimalId>
+    <Nome>Sr.Salsichudo</Nome>
+    <Idade>8</Idade>
+    <Genero>Macho</Genero>
+    <Raca>Dachshund</Raca>
+    <ProprietarioId>9</ProprietarioId>
   </Animal>
 </ArrayOfAnimal>

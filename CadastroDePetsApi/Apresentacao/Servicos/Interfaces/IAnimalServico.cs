@@ -13,5 +13,7 @@ public interface IAnimalServico
     ActionResult<AnimalDto>BuscarAnimalPorId(int id);
 
     bool DeletarPetPorId(int id);
-    
+
+    ActionResult<AnimalDto> AlterarInformacoesPet(int id, Animal animalAtualizado);
+
 }
