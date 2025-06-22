@@ -3,6 +3,7 @@ using CadastroDePetsApi.Apresentacao.DTOs;
 using CadastroDePetsApi.Apresentacao.Servico.Interfaces;
 using CadastroDePetsApi.Persistencia.Context.Interfaces;
 using CadastroDePetsApi.Persistencia.Entidades;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CadastroDePetsApi.Apresentacao.Servico;
@@ -128,5 +129,44 @@ public class AnimalServico : IAnimalServico
         }
 
 
+    }
+    public bool AlterarInformacoesPet(Animal animalAtualizado)
+    {
+        try
+        {
+            var animais = _xmlContext.CarregarDados<Animal>(animalCaminho);
+            var animalAntigo = animais.FirstOrDefault(a => a.AnimalId == animalAtualizado.AnimalId);
+
+            if (animalAntigo == null)
+                return false;
+
+            RealizarMapeamentoCondicional(animalAntigo, animalAtualizado);
+            DeletarPetPorId(animalAntigo.AnimalId);
+            CadastrarAnimal(animalAntigo);
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private void RealizarMapeamentoCondicional(Animal animalAntigo, Animal animalNovo)
+    {
+        if (!string.IsNullOrWhiteSpace(animalNovo.Nome))
+            animalAntigo.Nome = animalNovo.Nome;
+
+        if (animalNovo.Idade > 0)
+            animalAntigo.Idade = animalNovo.Idade;
+
+        if (!string.IsNullOrWhiteSpace(animalNovo.Genero))
+            animalAntigo.Genero = animalNovo.Genero;
+
+        if (!string.IsNullOrWhiteSpace(animalNovo.Raca))
+            animalAntigo.Raca = animalNovo.Raca;
+
+        if (animalNovo.ProprietarioId > 0)
+            animalAntigo.ProprietarioId = animalNovo.ProprietarioId;
     }
 }
