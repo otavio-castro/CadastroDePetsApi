@@ -18,7 +18,7 @@ public class ProprietarioServico : IProprietarioServico
         _xmlContext = xmlContext;
     }
 
-     public bool CadastrarProprietario(Proprietario proprietario)
+    public bool CadastrarProprietario(Proprietario proprietario)
     {
         var proprietariosCadastrados = _xmlContext.CarregarDados<Proprietario>(proprietarioCaminho);
 
@@ -28,5 +28,29 @@ public class ProprietarioServico : IProprietarioServico
         _xmlContext.SalvarDados(proprietarioCaminho, new List<Proprietario> { proprietario });
 
         return true;
+    }
+    
+    public bool ExcluirProprietarioPorId(int id)
+    {
+       var proprietarios = _xmlContext.CarregarDados<Proprietario>(proprietarioCaminho);
+
+        try
+        {
+
+            var listaComProprietarioRemovido = from proprietario in proprietarios
+                                         where proprietario.ProprietarioId != id
+                                         select proprietario;
+
+            _xmlContext.LimparDados<Proprietario>(proprietarioCaminho);
+            _xmlContext.SalvarDados(proprietarioCaminho, listaComProprietarioRemovido.ToList());
+
+            return true;
+
+        }
+        catch
+        {
+            return false;
+        }
+
     }
 }

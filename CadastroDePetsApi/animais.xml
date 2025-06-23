@@ -40,4 +40,28 @@
     <Raca>Vira-lata</Raca>
     <ProprietarioId>1</ProprietarioId>
   </Animal>
+  <Animal>
+    <AnimalId>4</AnimalId>
+    <Nome>string666</Nome>
+    <Idade>0</Idade>
+    <Genero>string</Genero>
+    <Raca>string</Raca>
+    <ProprietarioId>2</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>12</AnimalId>
+    <Nome>string666</Nome>
+    <Idade>0</Idade>
+    <Genero>string</Genero>
+    <Raca>string</Raca>
+    <ProprietarioId>2</ProprietarioId>
+  </Animal>
+  <Animal>
+    <AnimalId>13</AnimalId>
+    <Nome>string666</Nome>
+    <Idade>0</Idade>
+    <Genero>string</Genero>
+    <Raca>string</Raca>
+    <ProprietarioId>0</ProprietarioId>
+  </Animal>
 </ArrayOfAnimal>
