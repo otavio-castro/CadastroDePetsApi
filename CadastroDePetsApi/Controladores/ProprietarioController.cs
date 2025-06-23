@@ -29,6 +29,8 @@ public class ProprietarioController : ControllerBase
     [HttpDelete("ExcluirProprietarioPorId/{id}")]
     public IActionResult ExcluirProprietarioPorId(int id)
     {
-        return Ok();
+        return _proprietarioServico.ExcluirProprietarioPorId(id)
+        ? Ok(new { Mensagem = "Proprietário excluído com sucesso" })
+        : NotFound(new { Mensagem = "Proprietário não encontrado" });
     }
 }

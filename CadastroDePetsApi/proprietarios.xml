@@ -2,8 +2,8 @@
 <ArrayOfProprietario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Proprietario>
     <ProprietarioId>1</ProprietarioId>
-    <Nome>Otávio</Nome>
-    <Endereco>Rua Pitawa</Endereco>
-    <Telefone>4002-8922</Telefone>
+    <Nome>cesar</Nome>
+    <Endereco>betim</Endereco>
+    <Telefone>matheus</Telefone>
   </Proprietario>
 </ArrayOfProprietario>
