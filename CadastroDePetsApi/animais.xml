@@ -24,44 +24,4 @@
     <Raca>Dachshund</Raca>
     <ProprietarioId>0</ProprietarioId>
   </Animal>
-  <Animal>
-    <AnimalId>5</AnimalId>
-    <Nome>Sr.Salsichudo</Nome>
-    <Idade>8</Idade>
-    <Genero>Macho</Genero>
-    <Raca>Dachshund</Raca>
-    <ProprietarioId>9</ProprietarioId>
-  </Animal>
-  <Animal>
-    <AnimalId>87</AnimalId>
-    <Nome>Vicenta</Nome>
-    <Idade>6</Idade>
-    <Genero>Femea</Genero>
-    <Raca>Vira-lata</Raca>
-    <ProprietarioId>1</ProprietarioId>
-  </Animal>
-  <Animal>
-    <AnimalId>4</AnimalId>
-    <Nome>string666</Nome>
-    <Idade>0</Idade>
-    <Genero>string</Genero>
-    <Raca>string</Raca>
-    <ProprietarioId>2</ProprietarioId>
-  </Animal>
-  <Animal>
-    <AnimalId>12</AnimalId>
-    <Nome>string666</Nome>
-    <Idade>0</Idade>
-    <Genero>string</Genero>
-    <Raca>string</Raca>
-    <ProprietarioId>2</ProprietarioId>
-  </Animal>
-  <Animal>
-    <AnimalId>13</AnimalId>
-    <Nome>string666</Nome>
-    <Idade>0</Idade>
-    <Genero>string</Genero>
-    <Raca>string</Raca>
-    <ProprietarioId>0</ProprietarioId>
-  </Animal>
 </ArrayOfAnimal>
